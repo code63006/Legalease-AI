@@ -5,18 +5,25 @@ import { getFirestore } from "firebase/firestore";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+declare const __FIREBASE_CONFIG__: {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
 };
 
-// Debug log
-console.log('Initializing Firebase with config:', { ...firebaseConfig, apiKey: '******' });
+// Your web app's Firebase configuration
+const firebaseConfig = __FIREBASE_CONFIG__;
+
+// Debug logs
+console.log('Environment variables check:', {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ? 'exists' : 'missing',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? 'exists' : 'missing',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ? 'exists' : 'missing'
+});
+console.log('Firebase config:', { ...firebaseConfig, apiKey: '******' });
 
 // Initialize Firebase with error handling
 let firebaseApp;
