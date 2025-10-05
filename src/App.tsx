@@ -19,7 +19,6 @@ function App() {
   const [analysisResult, setAnalysisResult] = useState<any>(null);
   const {
     analyzeDocument,
-    speakExplanation,
     audioExplanationUrl,
     loading: aiLoading,
     isSpeaking,
@@ -44,8 +43,16 @@ function App() {
   };
 
   const handleAnalyze = async (file: File) => {
+    if (!user) {
+      console.error("App.tsx: User not authenticated. Aborting analysis.");
+      // Optionally, set an error state to inform the user in the UI
+      return;
+    }
+
     try {
       const { documentProcessingResult, explanation } = await analyzeDocument(file);
+      console.log('documentProcessingResult:', documentProcessingResult);
+      console.log('explanation:', explanation);
       // Assuming documentProcessingResult.text contains the extracted text
       const structuredResult = {
         id: file.name + Date.now(), // Unique ID
@@ -92,6 +99,7 @@ function App() {
             onFileUpload={handleAnalyze}
             loading={aiLoading}
             language={language}
+            user={user}
           />
         )}
         {currentView === 'dashboard' && user && (
@@ -101,10 +109,9 @@ function App() {
             language={language}
             onNavigate={(section: string) => setCurrentView(section as typeof currentView)}
             fileName={analysisResult?.fileName || ''}
-            speakExplanation={speakExplanation} // New prop
-            audioExplanationUrl={audioExplanationUrl} // New prop
-            isSpeaking={isSpeaking} // New prop
-            speechError={speechError} // New prop
+            audioExplanationUrl={audioExplanationUrl}
+            isSpeaking={isSpeaking}
+            speechError={speechError}
           />
         )}
         {currentView === 'compare' && (

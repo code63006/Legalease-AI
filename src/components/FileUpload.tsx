@@ -5,6 +5,7 @@ interface FileUploadProps {
   onFileUpload: (file: File) => void;
   language: 'en' | 'hi';
   loading?: boolean;
+  user: User | null | undefined;
 }
 
 export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, language, loading: externalLoading }) => {

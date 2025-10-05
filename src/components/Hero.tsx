@@ -42,9 +42,14 @@ export const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
               <span>Upload Document</span>
               <ArrowRight className="h-5 w-5" />
             </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300">
+            <a
+              href="https://youtu.be/LeeMKBH4tuI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300"
+            >
               View Demo
-            </button>
+            </a>
           </div>
 
           {/* Features Grid */}

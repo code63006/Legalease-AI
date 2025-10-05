@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { auth } from '../firebase';
 
 // --- Configuration ---
 // TODO: Make sure the region matches your Firebase project's default region.
@@ -31,10 +32,18 @@ const useDocumentAI = () => {
     setError(null);
 
     try {
+        const user = auth.currentUser;
+        if (!user) throw new Error('User not authenticated');
+        const token = await user.getIdToken(true); // Force refresh token
+        console.log('Got auth token:', token.substring(0, 10) + '...');
+
         const fileContent = await fileToBase64(file);
         const response = await fetch(`${cloudFunctionBaseUrl}/processDocument`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 fileContent,
                 mimeType: file.type
@@ -71,9 +80,16 @@ export const useVertexAI = () => {
     setError(null);
 
     try {
+        const user = auth.currentUser;
+        if (!user) throw new Error('User not authenticated');
+        const token = await user.getIdToken();
+
         const res = await fetch(`${cloudFunctionBaseUrl}/generateContent`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({ prompt }),
         });
 
@@ -84,6 +100,7 @@ export const useVertexAI = () => {
 
         const data = await res.json();
         setResponse(data.response);
+        return data.response;
     } catch (err: any) {
         setError(err);
     } finally {
@@ -105,9 +122,16 @@ export const useGoogleTranslate = () => {
     setError(null);
 
     try {
+        const user = auth.currentUser;
+        if (!user) throw new Error('User not authenticated');
+        const token = await user.getIdToken();
+
         const res = await fetch(`${cloudFunctionBaseUrl}/translateText`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({ text, target: targetLanguage }),
         });
 
@@ -139,9 +163,16 @@ export const useTextToSpeech = () => {
     setAudioUrl(''); // Clear previous audio URL
 
     try {
+        const user = auth.currentUser;
+        if (!user) throw new Error('User not authenticated');
+        const token = await user.getIdToken();
+
         const res = await fetch(`${cloudFunctionBaseUrl}/synthesizeSpeech`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({ text, languageCode }),
         });
 

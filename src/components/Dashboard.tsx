@@ -8,7 +8,6 @@ interface DashboardProps {
   language: 'en' | 'hi';
   onNavigate: (section: string) => void;
   fileName: string;
-  speakExplanation: (explanation: string, language: 'en' | 'hi') => Promise<void>;
   audioExplanationUrl: string;
   isSpeaking: boolean;
   speechError: Error | null;
@@ -20,7 +19,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
   language,
   onNavigate,
   fileName,
-  speakExplanation,
   audioExplanationUrl,
   isSpeaking,
   speechError
