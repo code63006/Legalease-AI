@@ -6,13 +6,14 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// Get Firebase config from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk",
-  authDomain: "sample-firebase-ai-app-5a13c.firebaseapp.com",
-  projectId: "sample-firebase-ai-app-5a13c",
-  storageBucket: "sample-firebase-ai-app-5a13c.firebaseapp.com",
-  messagingSenderId: "743601729048",
-  appId: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
+  apiKey: "AIzaSyCFZ2ArM_6HI8ynFr4tduOtOtGxhZWiz7Y",
+  authDomain: "legalease-ai-auth.firebaseapp.com",
+  projectId: "legalease-ai-auth",
+  storageBucket: "legalease-ai-auth.appspot.com",
+  messagingSenderId: "451325696432",
+  appId: "1:451325696432:web:2f936a9d371b8d44a67f13"
 };
 
 // Debug log
