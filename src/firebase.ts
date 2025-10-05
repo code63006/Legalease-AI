@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration from environment variables
 const firebaseConfig = {
   apiKey: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk",
   authDomain: "sample-firebase-ai-app-5a13c.firebaseapp.com",
