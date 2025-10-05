@@ -23,12 +23,9 @@ jobs:
         with:
           node-version: '18'
       
-      # Install dependencies with clean slate
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules
-          rm -f package-lock.json
-          npm install
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
       
       - name: Create Service Account Key File
         run: echo '${{ secrets.SERVICE_ACCOUNT_KEY }}' > functions/service-account-key.json
