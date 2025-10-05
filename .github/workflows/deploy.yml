@@ -26,13 +26,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
+
+    - name: Clean npm cache
+      run: npm cache clean --force
 
     - name: Install Dependencies
       run: |
         npm install
         npm install -g vite
-        npm ci
 
     - name: Build
       env:

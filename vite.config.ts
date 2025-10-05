@@ -7,5 +7,14 @@ export default defineConfig({
   base: '/Legalease-AI/',
   optimizeDeps: {
     exclude: ['lucide-react'],
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 });
