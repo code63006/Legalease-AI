@@ -6,22 +6,31 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For more information on how to access Firebase instance visit:
-// https://firebase.google.com/docs/web/setup#access-firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk",
   authDomain: "sample-firebase-ai-app-5a13c.firebaseapp.com",
   projectId: "sample-firebase-ai-app-5a13c",
-  storageBucket: "sample-firebase-ai-app-5a13c.appspot.com",
+  storageBucket: "sample-firebase-ai-app-5a13c.firebaseapp.com",
   messagingSenderId: "743601729048",
   appId: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
 };
 
-// Initialize Firebase
-console.log("Firebase Config:", firebaseConfig);
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+// Debug log
+console.log('Initializing Firebase with config:', { ...firebaseConfig, apiKey: '******' });
+
+// Initialize Firebase with error handling
+let firebaseApp;
+try {
+  firebaseApp = initializeApp(firebaseConfig);
+  console.log('Firebase initialized successfully');
+} catch (error) {
+  console.error('Error initializing Firebase:', error);
+  throw error;
+}
+
+// Initialize services
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
 
 export { auth, db, googleProvider };

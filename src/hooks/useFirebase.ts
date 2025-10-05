@@ -1,15 +1,11 @@
-import app from '../firebase';
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { auth, db } from '../firebase';
 import { getStorage } from "firebase/storage";
 
 // Example hook that provides auth, firestore, and storage instances
 const useFirebase = () => {
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app);
+  const storage = getStorage();
 
-  return { app, auth, db, storage };
+  return { auth, db, storage };
 };
 
 export default useFirebase;
