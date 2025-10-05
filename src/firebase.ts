@@ -9,12 +9,12 @@ import { getFirestore } from "firebase/firestore";
 // For more information on how to access Firebase instance visit:
 // https://firebase.google.com/docs/web/setup#access-firebase
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  apiKey: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk",
+  authDomain: "sample-firebase-ai-app-5a13c.firebaseapp.com",
+  projectId: "sample-firebase-ai-app-5a13c",
+  storageBucket: "sample-firebase-ai-app-5a13c.appspot.com",
+  messagingSenderId: "743601729048",
+  appId: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
 };
 
 // Initialize Firebase
