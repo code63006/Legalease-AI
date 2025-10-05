@@ -36,13 +36,13 @@ jobs:
         npm run build
         cp dist/index.html dist/404.html
       env:
-        VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+        VITE_FIREBASE_API_KEY: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk"
         VITE_FIREBASE_AUTH_DOMAIN: "sample-firebase-ai-app-5a13c.firebaseapp.com"
         VITE_FIREBASE_PROJECT_ID: "sample-firebase-ai-app-5a13c"
         VITE_FIREBASE_STORAGE_BUCKET: "sample-firebase-ai-app-5a13c.appspot.com"
         VITE_FIREBASE_MESSAGING_SENDER_ID: "743601729048"
         VITE_FIREBASE_APP_ID: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
-        VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        VITE_GEMINI_API_KEY: "AIzaSyBAeuz1OBNYYj39_3lJPMVEyohg10zW9Vs"
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
