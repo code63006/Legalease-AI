@@ -5,17 +5,15 @@ import { getFirestore } from "firebase/firestore";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-declare const __FIREBASE_CONFIG__: {
-  apiKey: string;
-  authDomain: string;
-  projectId: string;
-  storageBucket: string;
-  messagingSenderId: string;
-  appId: string;
-};
-
 // Your web app's Firebase configuration
-const firebaseConfig = __FIREBASE_CONFIG__;
+const firebaseConfig = {
+  apiKey: "AIzaSyAPno0oOsuActjpgd_zVXZDAxMDWnOMcgk",
+  authDomain: "sample-firebase-ai-app-5a13c.firebaseapp.com",
+  projectId: "sample-firebase-ai-app-5a13c",
+  storageBucket: "sample-firebase-ai-app-5a13c.appspot.com",
+  messagingSenderId: "743601729048",
+  appId: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
+};
 
 // Debug logs
 console.log('Environment variables check:', {
