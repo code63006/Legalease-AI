@@ -15,16 +15,21 @@ const firebaseConfig = {
   appId: "1:743601729048:web:ae3ad1166541d1a9bd1d6d"
 };
 
-// Debug Firebase initialization
-console.log("Initializing Firebase with config:", {
-  ...firebaseConfig,
-  apiKey: "****" // Mask API key in logs
-});
+let app;
+let auth;
+let db;
+let googleProvider;
 
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const googleProvider = new GoogleAuthProvider();
+try {
+  console.log("Initializing Firebase...");
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  googleProvider = new GoogleAuthProvider();
+  console.log("Firebase initialized successfully!");
+} catch (error) {
+  console.error("Error initializing Firebase:", error);
+  throw error;
+}
 
 export { auth, db, googleProvider };
