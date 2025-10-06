@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInWithPopup, signOut } from 'firebase/auth';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { FileUpload } from './components/FileUpload';
